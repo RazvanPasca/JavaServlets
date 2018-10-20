@@ -1,0 +1,9 @@
+Java servlets = middle layer intre web app si restul app java.
+                faciliteaza comunicarea cu aplicatia Java care isi vede de treaba ei
+                putem seta variabile care sa fie accesibile in JSP - JSTL
+
+Pt web app avem nevoie si de web/Application server: Tomcat
+
+JSP= Java Server Pages -> cod HTML in care se poate apela cod Java
+
+Vom avea arhitectura MVC in care Java Servlet e controllerul si pagina JSP e view-ul.
