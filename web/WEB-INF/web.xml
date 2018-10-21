@@ -10,16 +10,15 @@
 
         <form-login-config>
             <form-login-page>
-                /views/login1.jsp
+                /views/login.jsp
             </form-login-page>
             <form-error-page>
-                /views/login1.jsp
+                /views/login.jsp
             </form-error-page>
         </form-login-config>
     </login-config>
 
     <welcome-file-list>
-        <!--<welcome-file>views/login1.jsp</welcome-file>-->
-        <welcome-file>redirect</welcome-file>
+        <welcome-file>views/login.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
