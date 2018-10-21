@@ -12,5 +12,6 @@
 </head>
 <body>
 USER LANDING PAGE
+<a href="/logout">Logout</a>
 </body>
 </html>

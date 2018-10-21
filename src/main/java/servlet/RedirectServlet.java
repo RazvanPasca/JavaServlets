@@ -17,6 +17,6 @@ public class RedirectServlet extends HttpServlet {
         else if (role.equalsIgnoreCase("user"))
             response.sendRedirect("views/user/user.jsp");
         else
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("views/login.jsp");
     }
 }

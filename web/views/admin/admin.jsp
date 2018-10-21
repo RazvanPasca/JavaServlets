@@ -12,5 +12,6 @@
 </head>
 <body>
 ADMIN LANDING PAGE
+<a href="/logout">Logout</a>
 </body>
 </html>
