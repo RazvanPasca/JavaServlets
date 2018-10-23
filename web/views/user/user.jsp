@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: raz_p
@@ -13,5 +14,12 @@
 <body>
 USER LANDING PAGE
 <a href="/logout">Logout</a>
+<ul>
+    <c:forEach items="${flights}" var="flight">
+        <li>
+            Departure City: <c:out value="${flight.departureCity}"/>
+        </li>
+    </c:forEach>
+</ul>
 </body>
 </html>

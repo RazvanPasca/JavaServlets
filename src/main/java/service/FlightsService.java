@@ -1,6 +1,6 @@
 package service;
 
-import entities.Flight;
+import entities.FlightEntity;
 import repository.FlightsRepo;
 
 import java.util.List;
@@ -9,7 +9,7 @@ public class FlightsService {
 
     private FlightsRepo flightsRepo = new FlightsRepo();
 
-    public List<Flight> findAllFlights() {
+    public List<FlightEntity> findAllFlights() {
         return flightsRepo.findAllFlights();
     }
 

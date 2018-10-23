@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 
             session.setAttribute("username", username);
             session.setAttribute("role", "admin");
-            resp.sendRedirect("/views/admin/admin.jsp");
+            resp.sendRedirect("/getFlights");
         } else {
             session.setAttribute("error", "Invalid credentials");
             resp.sendRedirect("/views/login.jsp");
