@@ -1,20 +1,21 @@
 package entities;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cities", schema = "assignment-one")
+@Table(name = "cities", schema = "flights-schema")
 @Setter
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CityEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Basic
@@ -26,9 +27,6 @@ public class CityEntity {
     @Basic
     @Column(name = "longitude")
     private double longitude;
-
-    public CityEntity() {
-    }
 
 
     @Override

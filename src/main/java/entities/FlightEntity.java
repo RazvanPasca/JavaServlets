@@ -1,33 +1,50 @@
 package entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "flights", schema = "assignment-one")
+@Table(name = "flights", schema = "flights-schema")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class FlightEntity {
     private int id;
     private String airplaneType;
     private Timestamp arrivalTime;
     private Timestamp departureTime;
+    private CityEntity arrivalCity;
+    private CityEntity departureCity;
+
     private int flightNr;
 
     @ManyToOne
-    @JoinColumn(name = "departure_city_id")
-    private CityEntity departureCity;
+    @JoinColumn(name = "arrival_city_id")
+    public CityEntity getArrivalCity() {
+        return arrivalCity;
+    }
+
+    public void setArrivalCity(CityEntity arrivalCity) {
+        this.arrivalCity = arrivalCity;
+    }
 
     @ManyToOne
-    @JoinColumn(name = "arrival_city_id")
-    private CityEntity arrivalCity;
+    @JoinColumn(name = "departure_city_id")
+    public CityEntity getDepartureCity() {
+        return departureCity;
+    }
 
-    public FlightEntity() {
+    public void setDepartureCity(CityEntity departureCity) {
+        this.departureCity = departureCity;
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -91,7 +108,16 @@ public class FlightEntity {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, airplaneType, arrivalTime, departureTime);
+    }
+
+    @Override
+    public String toString() {
+        return "FlightEntity{" +
+                "id=" + id +
+                ", airplaneType='" + airplaneType + '\'' +
+                ", arrivalCity=" + arrivalCity +
+                ", departureCity=" + departureCity +
+                '}';
     }
 }

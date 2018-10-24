@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user_role", schema = "assignment-one")
+@Table(name = "user_role", schema = "flights-schema")
 @Getter
 @Setter
 public class UserRoleEntity {

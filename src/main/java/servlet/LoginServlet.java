@@ -1,5 +1,6 @@
 package servlet;
 
+import repository.UserRepo;
 import service.AdminService;
 import service.UserService;
 
@@ -14,7 +15,7 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    UserService userService = new UserService();
+    UserService userService = new UserService(new UserRepo());
     AdminService adminService = new AdminService();
 
     @Override

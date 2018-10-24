@@ -4,11 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users", schema = "assignment-one")
+@Table(name = "users", schema = "flights-schema")
 public class UserEntity {
     private String name;
     private String password;
     private int id;
+
+    public UserEntity() {
+    }
 
     @Basic
     @Column(name = "name")
@@ -31,6 +34,7 @@ public class UserEntity {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -52,7 +56,14 @@ public class UserEntity {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name, password, id);
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
