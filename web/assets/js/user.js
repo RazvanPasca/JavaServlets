@@ -1,21 +1,17 @@
-init = () =
->
-{
+init = () => {
 
     const buttons = document.getElementsByTagName("button");
     for (let button of buttons) {
-        button.onclick = () =
-    >
-        getFlightCoords(button);
+        button.onclick = () => {
+            getFlightCoords(button);
+        }
     }
+
 }
 
-getFlightCoords = (button) =
->
-{
-    alert(button.value);
+getFlightCoords = (button) => {
     let form = document.createElement('form');
-    form.setAttribute('method', 'post');
+    form.setAttribute('method', 'get');
     form.setAttribute('action', '/getLocalArrival');
 
     let input = document.createElement('input');
