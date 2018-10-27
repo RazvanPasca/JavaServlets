@@ -5,16 +5,19 @@ import lombok.AllArgsConstructor;
 import repository.UserRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 public class UserService {
 
     UserRepo userRepo;
 
-    public boolean isUserValid(String username, String password) {
-        List<UserEntity> users = userRepo.findUsersByUsername("pasca");
-        System.out.println(users);
 
-        return username.equalsIgnoreCase("pasca") && password.equalsIgnoreCase("pasca");
+    public Optional<UserEntity> areCredentialsValid(String username, String pass) {
+        List<UserEntity> users = userRepo.findUsersByUsername(username);
+
+        Optional<UserEntity> user = users.stream().filter(e -> e.getPassword().equalsIgnoreCase(pass)).findFirst();
+
+        return user;
     }
 }

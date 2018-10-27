@@ -42,7 +42,15 @@ public class CityEntity {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name, lattitude, longitude);
+    }
+
+    @Override
+    public String toString() {
+        return "CityEntity{" +
+                "name='" + name + '\'' +
+                ", lattitude=" + lattitude +
+                ", longitude=" + longitude +
+                '}';
     }
 }

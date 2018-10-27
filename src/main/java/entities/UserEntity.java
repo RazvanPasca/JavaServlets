@@ -8,6 +8,8 @@ import java.util.Objects;
 public class UserEntity {
     private String name;
     private String password;
+    @Column(name = "role")
+    private String role;
     private int id;
 
     public UserEntity() {
@@ -44,6 +46,15 @@ public class UserEntity {
         this.id = id;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,6 +74,7 @@ public class UserEntity {
     public String toString() {
         return "UserEntity{" +
                 "name='" + name + '\'' +
+                ", role='" + role + '\'' +
                 ", id=" + id +
                 '}';
     }

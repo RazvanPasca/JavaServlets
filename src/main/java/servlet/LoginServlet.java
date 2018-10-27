@@ -1,7 +1,7 @@
 package servlet;
 
+import entities.UserEntity;
 import repository.UserRepo;
-import service.AdminService;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -11,31 +11,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     UserService userService = new UserService(new UserRepo());
-    AdminService adminService = new AdminService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String pass = req.getParameter("password");
         HttpSession session = req.getSession();
-        if (userService.isUserValid(username, pass)) {
+        Optional<UserEntity> user = userService.areCredentialsValid(username, pass);
 
+        if (user.get().getRole().equalsIgnoreCase("user")) {
             session.setAttribute("username", username);
             session.setAttribute("role", "user");
-            resp.sendRedirect("/views/user/user.jsp");
-        } else if (adminService.isAdminValid(username, pass)) {
-
+            resp.sendRedirect("/getFlights");
+        } else if (user.get().getRole().equalsIgnoreCase("admin")) {
             session.setAttribute("username", username);
             session.setAttribute("role", "admin");
             resp.sendRedirect("/getFlights");
         } else {
             session.setAttribute("error", "Invalid credentials");
-            resp.sendRedirect("/views/login.jsp");
+            resp.sendRedirect("/");
         }
     }
 }

@@ -24,11 +24,11 @@
             root
         </property>
 
-        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="entities.CityEntity"/>
         <mapping class="entities.FlightEntity"/>
-        <mapping class="entities.UserRoleEntity"/>
+        <!--<mapping class="entities.UserRoleEntity"/>-->
         <mapping class="entities.UserEntity"/>
     </session-factory>
 </hibernate-configuration>
