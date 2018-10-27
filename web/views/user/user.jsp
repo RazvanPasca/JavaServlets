@@ -12,18 +12,27 @@
     <title>Flights-Page</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../../assets/css/user.css" media="screen"/>
-
+    <script type="text/javascript" src="../../assets/js/user.js"></script>
 </head>
 <body>
-USER LANDING PAGE
-<a href="/logout">Logout</a>
+<a id="logout" href="/logout">Logout</a>
 <%--@elvariable id="flights" type="java.util.List"--%>
 <ul>
     <c:forEach var="flight" items="${flights}">
         <li>
-            Departure City: <c:out value="${flight}"/>
+            Departure City: <c:out value="${flight.departureCity}"/>
             <br>
-            Arrival City: <c:out value="${flight}"/>
+            Arrival City: <c:out value="${flight.arrivalCity}"/>
+            <br>
+            Departure Time: <c:out value="${flight.departureTime}"/>
+            <br>
+            Arrival Time: <c:out value="${flight.arrivalTime}"/>
+            <br>
+            <button id="getFlightCoords"
+                    type="submit"
+                    value=<c:out value="${flight.id}"/>>
+                Get local time
+            </button>
         </li>
         <br/>
     </c:forEach>

@@ -2,3 +2,46 @@ body {
     background-image: url("../Airplane-decoliren.png");
     background-size: 100% 100%;
 }
+
+ul {
+    position: fixed;
+    top: 100px;
+    left: 30px;
+    width: 45%;
+}
+
+li {
+    background: #DEB666;
+    border: cadetblue;
+    color: mediumpurple;
+    list-style: none;
+    opacity: .8;
+    width: 100%;
+    margin: 3px 0px;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: 10px;
+    left: 80%;
+    position: relative;
+    top: -50px;
+    height: 30px;
+}
+
+#logout {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: block;
+    width: 115px;
+    height: 20px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}

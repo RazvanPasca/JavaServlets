@@ -15,10 +15,10 @@ public class AdminRequiredFilter implements Filter {
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
-
 
         if (!session.getAttribute("role").equals("admin"))
             resp.sendRedirect("/redirect");
