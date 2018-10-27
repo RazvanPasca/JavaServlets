@@ -1,9 +1,13 @@
-jQuery(document).ready(function($){
-    $(".dropdown-button").dropdown();
-    $('.modal').modal();
-    $(".signup-toggle").click(function(){
-        $(this).hide();
-        $(".signupForm").show(300);
-        $(".policy").css("visibility","visible");
+jQuery(document).ready(function ($) {
+    tab = $('.tabs h3 a');
+
+    tab.on('click', function (event) {
+        event.preventDefault();
+        tab.removeClass('active');
+        $(this).addClass('active');
+
+        tab_content = $(this).attr('href');
+        $('div[id$="tab-content"]').removeClass('active');
+        $(tab_content).addClass('active');
     });
 });

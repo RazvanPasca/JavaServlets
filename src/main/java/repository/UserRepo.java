@@ -1,31 +1,37 @@
 package repository;
 
 import entities.UserEntity;
+import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
+@AllArgsConstructor
 public class UserRepo {
 
-    private static SessionFactory factory;
-
+    private SessionFactory factory;
 
     public List<UserEntity> findUsersByUsername(String username) {
 
-        factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
 
-        Transaction tx = null;
-
-        tx = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         List users = session.createQuery("FROM UserEntity where name = :name").
                 setParameter("name", username).list();
-        List<UserEntity> userEntities = (List<UserEntity>) (Object) users;
+        List<UserEntity> userEntities = (List<UserEntity>) users;
         tx.commit();
 
+        return userEntities;
+    }
+
+    public List<UserEntity> findAllUsers() {
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        List users = session.createQuery("FROM UserEntity").list();
+        List<UserEntity> userEntities = (List<UserEntity>) users;
+        tx.commit();
         return userEntities;
     }
 }

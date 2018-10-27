@@ -1,6 +1,7 @@
 package servlet;
 
 import entities.UserEntity;
+import repository.SessionFactoryProvider;
 import repository.UserRepo;
 import service.UserService;
 
@@ -16,7 +17,7 @@ import java.util.Optional;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    UserService userService = new UserService(new UserRepo());
+    UserService userService = new UserService(new UserRepo(SessionFactoryProvider.getSessionFactory()));
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,11 +29,13 @@ public class LoginServlet extends HttpServlet {
         if (user.get().getRole().equalsIgnoreCase("user")) {
             session.setAttribute("username", username);
             session.setAttribute("role", "user");
-            resp.sendRedirect("/getFlights");
+            resp.sendRedirect("/getFlightsUser");
+
         } else if (user.get().getRole().equalsIgnoreCase("admin")) {
             session.setAttribute("username", username);
             session.setAttribute("role", "admin");
-            resp.sendRedirect("/getFlights");
+            resp.sendRedirect("/getDataAdmin");
+
         } else {
             session.setAttribute("error", "Invalid credentials");
             resp.sendRedirect("/");

@@ -20,4 +20,9 @@ public class UserService {
 
         return user;
     }
+
+    public List<UserEntity> findAllUsers() {
+        List<UserEntity> users = userRepo.findAllUsers();
+        return users;
+    }
 }

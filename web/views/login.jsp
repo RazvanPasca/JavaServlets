@@ -10,10 +10,10 @@
 <head>
     <title>Title</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../assets/css/login1.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/login.css" media="screen"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
             type="text/javascript"></script>
-    <script src="../assets/js/login1.js" type="text/javascript"></script>
+    <script src="../assets/js/login.js" type="text/javascript"></script>
 </head>
 
 

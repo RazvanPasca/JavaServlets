@@ -10,6 +10,9 @@
 <html>
 <head>
     <title>Flights-Page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/user.css" media="screen"/>
+
 </head>
 <body>
 USER LANDING PAGE

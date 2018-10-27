@@ -13,7 +13,7 @@ public class RedirectServlet extends HttpServlet {
         String role = (String) request.getSession().getAttribute("role");
 
         if (role.equalsIgnoreCase("admin"))
-            response.sendRedirect("views//admin/admin.jsp");
+            response.sendRedirect("views/admin/admin.jsp");
         else if (role.equalsIgnoreCase("user"))
             response.sendRedirect("views/user/user.jsp");
         else
