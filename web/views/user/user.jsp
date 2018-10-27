@@ -17,6 +17,12 @@
 <body>
 <a id="logout" href="/logout">Logout</a>
 <%--@elvariable id="flights" type="java.util.List"--%>
+
+<div id="pop-up">
+    Arrival time in <c:out value="${arrivalCity.name} "/>is
+    <h3 id="arrivalTime"><c:out value="${newArrivalTime}"/></h3>
+</div>
+
 <ul>
     <c:forEach var="flight" items="${flights}">
         <li>

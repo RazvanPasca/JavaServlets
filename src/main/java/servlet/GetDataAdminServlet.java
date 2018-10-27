@@ -30,9 +30,6 @@ public class GetDataAdminServlet extends HttpServlet {
         List<FlightEntity> airplanes = flightsService.findAllFlights();
         List<UserEntity> users = userService.findAllUsers();
 
-        System.out.println(airplanes);
-        System.out.println(users);
-
         req.getSession().setAttribute("flights", airplanes);
         req.getSession().setAttribute("users", users);
 

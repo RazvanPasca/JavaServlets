@@ -15,15 +15,16 @@ public class FlightsService {
 
     private FlightsRepo flightsRepo;
 
-    private static Map<Integer, FlightEntity> flightsMap;
+    private static Map<Integer, FlightEntity> flightsMap = null;
 
     public List<FlightEntity> findAllFlights() {
 
-        List<FlightEntity> flightEntities = flightsRepo.findAllFlights();
-
-        flightsMap = flightEntities.stream().collect(Collectors.toMap(FlightEntity::getId, e -> e));
-
-        return flightEntities;
+        if (flightsMap == null) {
+            List<FlightEntity> flightEntities = flightsRepo.findAllFlights();
+            flightsMap = flightEntities.stream().collect(Collectors.toMap(FlightEntity::getId, e -> e));
+            return flightEntities;
+        }
+        return (List<FlightEntity>) flightsMap.values();
     }
 
     public FlightEntity getFlightById(int id) {

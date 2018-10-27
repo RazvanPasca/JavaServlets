@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -16,8 +16,8 @@ import java.util.Objects;
 public class FlightEntity {
     private int id;
     private String airplaneType;
-    private Timestamp arrivalTime;
-    private Timestamp departureTime;
+    private LocalDateTime arrivalTime;
+    private LocalDateTime departureTime;
     private CityEntity arrivalCity;
     private CityEntity departureCity;
 
@@ -77,21 +77,21 @@ public class FlightEntity {
 
     @Basic
     @Column(name = "arrival_time")
-    public Timestamp getArrivalTime() {
+    public LocalDateTime getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(Timestamp arrivalTime) {
+    public void setArrivalTime(LocalDateTime arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
     @Basic
     @Column(name = "departure_time")
-    public Timestamp getDepartureTime() {
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Timestamp departureTime) {
+    public void setDepartureTime(LocalDateTime departureTime) {
         this.departureTime = departureTime;
     }
 

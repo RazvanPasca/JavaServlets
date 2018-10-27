@@ -21,10 +21,7 @@ public class GetFlightsUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         List<FlightEntity> airplanes = flightsService.findAllFlights();
-
-        System.out.println(airplanes);
 
         req.getSession().setAttribute("flights", airplanes);
         resp.sendRedirect("/views/user/user.jsp");
