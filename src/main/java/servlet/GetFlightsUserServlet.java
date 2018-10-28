@@ -1,8 +1,10 @@
 package servlet;
 
 import entities.FlightEntity;
+import repository.CityRepo;
 import repository.FlightsRepo;
 import repository.SessionFactoryProvider;
+import service.CityService;
 import service.FlightsService;
 
 import javax.servlet.ServletException;
@@ -17,7 +19,7 @@ import java.util.List;
 public class GetFlightsUserServlet extends HttpServlet {
 
     private FlightsService flightsService = new FlightsService(new FlightsRepo(SessionFactoryProvider
-            .getSessionFactory()));
+            .getSessionFactory()), new CityService(new CityRepo(SessionFactoryProvider.getSessionFactory())));
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

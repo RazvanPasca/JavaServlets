@@ -1,10 +1,11 @@
 package servlet;
 
 import entities.FlightEntity;
-import entities.UserEntity;
+import repository.CityRepo;
 import repository.FlightsRepo;
 import repository.SessionFactoryProvider;
 import repository.UserRepo;
+import service.CityService;
 import service.FlightsService;
 import service.UserService;
 
@@ -20,7 +21,7 @@ import java.util.List;
 public class GetDataAdminServlet extends HttpServlet {
 
     private FlightsService flightsService = new FlightsService(new FlightsRepo(SessionFactoryProvider
-            .getSessionFactory()));
+            .getSessionFactory()), new CityService(new CityRepo(SessionFactoryProvider.getSessionFactory())));
     private UserService userService = new UserService(new UserRepo(SessionFactoryProvider.getSessionFactory()));
 
 
@@ -28,10 +29,8 @@ public class GetDataAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         List<FlightEntity> airplanes = flightsService.findAllFlights();
-        List<UserEntity> users = userService.findAllUsers();
 
         req.getSession().setAttribute("flights", airplanes);
-        req.getSession().setAttribute("users", users);
 
         resp.sendRedirect("views/admin/admin.jsp");
     }

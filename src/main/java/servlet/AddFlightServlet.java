@@ -4,6 +4,7 @@ package servlet;
 import repository.CityRepo;
 import repository.FlightsRepo;
 import repository.SessionFactoryProvider;
+import service.CityService;
 import service.FlightsService;
 
 import javax.servlet.ServletException;
@@ -12,27 +13,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet("/addFlight")
 public class AddFlightServlet extends HttpServlet {
 
     private FlightsService flightsService = new FlightsService(new FlightsRepo(SessionFactoryProvider
-            .getSessionFactory()));
+            .getSessionFactory()), new CityService(new CityRepo(SessionFactoryProvider.getSessionFactory())));
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+
         String airplaneType = req.getParameter("airplane");
         String departureCity = req.getParameter("departureCity");
-        LocalDateTime departureDate = LocalDateTime.parse(req.getParameter("departureTime"));
+        LocalDateTime departureDate = LocalDate.parse(req.getParameter("departureTime"), format).atStartOfDay();
         String arrivalCity = req.getParameter("arrivalCity");
-        LocalDateTime arrivalDate = LocalDateTime.parse(req.getParameter("arrivalTime"));
+        LocalDateTime arrivalDate = LocalDate.parse(req.getParameter("arrivalTime"), format).atStartOfDay();
 
-        flightsService.setCityRepo(new CityRepo(SessionFactoryProvider.getSessionFactory()));
-
-        flightsService.saveFlight(airplaneType,departureCity,departureDate,arrivalCity,arrivalDate);
-        resp.sendRedirect("/views/admin/admin.jsp");
-
+        flightsService.saveFlight(airplaneType, departureCity, departureDate, arrivalCity, arrivalDate);
+        resp.sendRedirect("/getDataAdmin");
     }
 }

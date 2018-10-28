@@ -1,18 +1,21 @@
 package repository;
 
 import entities.FlightEntity;
-import lombok.AllArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-@AllArgsConstructor
+
 public class FlightsRepo {
 
     private SessionFactory factory;
+    private static boolean wasDbChanged;
 
+    public FlightsRepo(SessionFactory factory) {
+        this.factory = factory;
+    }
 
     public List<FlightEntity> findAllFlights() {
         Session session = factory.openSession();
@@ -21,6 +24,7 @@ public class FlightsRepo {
         List flights = session.createQuery("FROM FlightEntity").list();
         List<FlightEntity> flightsEntities = (List<FlightEntity>) flights;
         tx.commit();
+        setDbUnchanged();
 
         return flightsEntities;
     }
@@ -32,7 +36,18 @@ public class FlightsRepo {
 
         session.save(flightEntity);
         tx.commit();
+        setDbChanged();
     }
 
+    private void setDbChanged() {
+        wasDbChanged = true;
+    }
 
+    public void setDbUnchanged() {
+        wasDbChanged = false;
+    }
+
+    public boolean wasDbChanged() {
+        return wasDbChanged;
+    }
 }

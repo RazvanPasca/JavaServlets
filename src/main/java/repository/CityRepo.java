@@ -26,14 +26,17 @@ public class CityRepo {
         return cityEntities;
     }
 
-    public void saveCity(CityEntity cityEntity) {
+    public CityEntity saveCity(CityEntity cityEntity) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(cityEntity);
+        Integer id = (Integer) session.save(cityEntity);
         tx.commit();
+        CityEntity savedCityEntity = (CityEntity) session.createQuery("FROM CityEntity where id = :id")
+                                                         .setParameter("id", id).list().get(0);
+        return savedCityEntity;
     }
 
-    public List<CityEntity> findCitiesByName(String cityName) {
+    public CityEntity findCityByName(String cityName) {
         Session session = sessionFactory.openSession();
 
         Transaction tx = session.beginTransaction();
@@ -41,7 +44,10 @@ public class CityRepo {
         List<CityEntity> cityEntities = (List<CityEntity>) cities;
         tx.commit();
 
-        return cityEntities;
+        if (cityEntities.size() != 0)
+            return cityEntities.get(0);
+        else
+            return null;
     }
 
 }

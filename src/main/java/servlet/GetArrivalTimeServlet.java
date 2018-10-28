@@ -1,7 +1,9 @@
 package servlet;
 
+import repository.CityRepo;
 import repository.FlightsRepo;
 import repository.SessionFactoryProvider;
+import service.CityService;
 import service.FlightsService;
 import service.UtilityService;
 
@@ -17,11 +19,11 @@ public class GetArrivalTimeServlet extends HttpServlet {
 
     String url = "https://maps.googleapis.com/maps/api/timezone/json?location=%s,%s&timestamp=%s&key=AIzaSyD9BOYiPPJ3hYvpwMd9xzNqNTFMnaUaNbE";
 
-    private UtilityService utilityService = new UtilityService(new FlightsService(new FlightsRepo(SessionFactoryProvider
-            .getSessionFactory())), url);
-
     private FlightsService flightsService = new FlightsService(new FlightsRepo(SessionFactoryProvider
-            .getSessionFactory()));
+            .getSessionFactory()), new CityService(new CityRepo(SessionFactoryProvider.getSessionFactory())));
+
+
+    private UtilityService utilityService = new UtilityService(this.flightsService, url);
 
 
     @Override
