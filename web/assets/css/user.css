@@ -19,6 +19,7 @@ li {
     width: 100%;
     margin: 3px 0px;
     border-radius: 5px;
+    padding: 3px;
 }
 
 button {

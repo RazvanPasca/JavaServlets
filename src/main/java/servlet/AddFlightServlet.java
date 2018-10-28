@@ -28,14 +28,17 @@ public class AddFlightServlet extends HttpServlet {
 
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-
+        int flightId = Integer.parseInt(req.getParameter("flightId"));
         String airplaneType = req.getParameter("airplane");
         String departureCity = req.getParameter("departureCity");
         LocalDateTime departureDate = LocalDate.parse(req.getParameter("departureTime"), format).atStartOfDay();
         String arrivalCity = req.getParameter("arrivalCity");
         LocalDateTime arrivalDate = LocalDate.parse(req.getParameter("arrivalTime"), format).atStartOfDay();
 
-        flightsService.saveFlight(airplaneType, departureCity, departureDate, arrivalCity, arrivalDate);
+        if (flightId == 0)
+            flightsService.saveFlight(airplaneType, departureCity, departureDate, arrivalCity, arrivalDate);
+        else
+            flightsService.updateFlight(airplaneType, departureCity, departureDate, arrivalCity, arrivalDate, flightId);
         resp.sendRedirect("/getDataAdmin");
     }
 }

@@ -30,11 +30,19 @@ public class FlightsRepo {
     }
 
     public void saveFlight(FlightEntity flightEntity) {
-
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
 
         session.save(flightEntity);
+        tx.commit();
+        setDbChanged();
+    }
+
+    public void updateFlight(FlightEntity flightEntity){
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        session.update(flightEntity);
         tx.commit();
         setDbChanged();
     }

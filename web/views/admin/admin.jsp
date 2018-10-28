@@ -29,6 +29,8 @@
                 Departure Time: <c:out value="${flight.departureTime}"/>
                 <br>
                 Arrival Time: <c:out value="${flight.arrivalTime}"/>
+                <br>
+                Flight id: <c:out value="${flight.id}"/>
                 <button id="delete"
                         type="submit"
                         value=<c:out value="${flight.id}"/>>
@@ -54,8 +56,11 @@
         <input type="date" class="input" name="arrivalTime" id="arrivalTime" required="required"
                placeholder="Arrival Time">
 
-        <input type="text" class="input" name="flightNr" id="flightNr" required="required"
+        <input type="number" class="input" name="flightNr" id="flightNr" required="required"
                placeholder="Flight Nr">
+
+        <input type="number" class="input" name="flightId" id="flightId"
+               placeholder=0>
 
         <input id="submit-button" type="submit" class="button" value="Add/Update flight">
 

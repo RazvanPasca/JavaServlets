@@ -62,6 +62,31 @@ public class FlightsService {
         flightsRepo.saveFlight(flightEntity);
     }
 
+    public void updateFlight(String airplaneType, String departureCity, LocalDateTime departureDate,
+                             String arrivalCity, LocalDateTime arrivalDate, int flightId) {
+
+        CityEntity arrivalCityEntity = cityService.findCityByName(arrivalCity);
+        CityEntity departureCityEntity = cityService.findCityByName(departureCity);
+
+        if (arrivalCityEntity == null) {
+            arrivalCityEntity = cityService.saveCity(arrivalCity);
+        }
+
+        if (departureCityEntity == null) {
+            departureCityEntity = cityService.saveCity(departureCity);
+        }
+
+        FlightEntity flightEntityToUpdate = getFlightById(flightId);
+
+        flightEntityToUpdate.setAirplaneType(airplaneType);
+        flightEntityToUpdate.setArrivalCity(arrivalCityEntity);
+        flightEntityToUpdate.setArrivalTime(arrivalDate);
+        flightEntityToUpdate.setDepartureCity(departureCityEntity);
+        flightEntityToUpdate.setDepartureTime(departureDate);
+        flightsRepo.updateFlight(flightEntityToUpdate);
+
+    }
+
     public void deleteFlight(int flightId) {
         flightsRepo.deleteFlight(flightId);
     }
