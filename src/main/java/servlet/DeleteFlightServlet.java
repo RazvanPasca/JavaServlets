@@ -25,6 +25,6 @@ public class DeleteFlightServlet extends HttpServlet {
         int flightId = Integer.parseInt(req.getParameter("flightId"));
 
         flightsService.deleteFlight(flightId);
-        resp.sendRedirect("/getDataAdmin");
+        resp.sendRedirect("/getFlights");
     }
 }

@@ -39,6 +39,6 @@ public class AddFlightServlet extends HttpServlet {
             flightsService.saveFlight(airplaneType, departureCity, departureDate, arrivalCity, arrivalDate);
         else
             flightsService.updateFlight(airplaneType, departureCity, departureDate, arrivalCity, arrivalDate, flightId);
-        resp.sendRedirect("/getDataAdmin");
+        resp.sendRedirect("/getFlights");
     }
 }

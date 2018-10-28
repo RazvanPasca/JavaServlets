@@ -29,12 +29,12 @@ public class LoginServlet extends HttpServlet {
         if (user.get().getRole().equalsIgnoreCase("user")) {
             session.setAttribute("username", username);
             session.setAttribute("role", "user");
-            resp.sendRedirect("/getFlightsUser");
+            resp.sendRedirect("/getFlights");
 
         } else if (user.get().getRole().equalsIgnoreCase("admin")) {
             session.setAttribute("username", username);
             session.setAttribute("role", "admin");
-            resp.sendRedirect("/getDataAdmin");
+            resp.sendRedirect("/getFlights");
 
         } else {
             session.setAttribute("error", "Invalid credentials");

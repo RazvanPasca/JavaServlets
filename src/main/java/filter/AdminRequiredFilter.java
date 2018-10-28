@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/views/admin/*", "/getDataAdmin","/addFlight","/deleteFlight"})
+@WebFilter(urlPatterns = {"/views/admin/*", "/addFlight", "/deleteFlight"})
 public class AdminRequiredFilter implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -25,7 +25,6 @@ public class AdminRequiredFilter implements Filter {
         else
             filterChain.doFilter(req, resp);
     }
-
 
     public void destroy() {
 

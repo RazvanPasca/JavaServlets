@@ -60,7 +60,7 @@
                placeholder="Flight Nr">
 
         <input type="number" class="input" name="flightId" id="flightId"
-               placeholder=0>
+               placeholder=0 value="0">
 
         <input id="submit-button" type="submit" class="button" value="Add/Update flight">
 
