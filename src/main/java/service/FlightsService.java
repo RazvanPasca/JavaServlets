@@ -61,4 +61,8 @@ public class FlightsService {
 
         flightsRepo.saveFlight(flightEntity);
     }
+
+    public void deleteFlight(int flightId) {
+        flightsRepo.deleteFlight(flightId);
+    }
 }

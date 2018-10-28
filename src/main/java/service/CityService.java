@@ -15,9 +15,10 @@ public class CityService {
     }
 
     public CityEntity saveCity(String cityName) {
+
         int id = ThreadLocalRandom.current().nextInt(0, max * max * max);
-        double longitude = ThreadLocalRandom.current().nextDouble(min, max);
-        double lattitude = ThreadLocalRandom.current().nextDouble(min, max);
+        double longitude = roundToTwo(ThreadLocalRandom.current().nextDouble(min, max));
+        double lattitude = roundToTwo(ThreadLocalRandom.current().nextDouble(min, max));
         CityEntity cityEntity = CityEntity.builder().name(cityName).lattitude(lattitude).longitude(longitude).id(id)
                                           .build();
         return cityRepo.saveCity(cityEntity);
@@ -25,6 +26,10 @@ public class CityService {
 
     public CityEntity findCityByName(String cityName) {
         return cityRepo.findCityByName(cityName);
+    }
+
+    private double roundToTwo(double number){
+        return Math.floor(number * 100) / 100;
     }
 
 }

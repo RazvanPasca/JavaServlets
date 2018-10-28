@@ -31,7 +31,7 @@ init = () =>
        Object.assign(pop_up.style, style);
 
     pop_up.onclick = () => {
-    pop_up.parentNode.removeChild(pop_up);
+        pop_up.parentNode.removeChild(pop_up);
     }
 }
 

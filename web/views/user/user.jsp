@@ -9,7 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>Flights-Page</title>
+    <title>Flights-Page-User</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../../assets/css/user.css" media="screen"/>
     <script type="text/javascript" src="../../assets/js/user.js"></script>

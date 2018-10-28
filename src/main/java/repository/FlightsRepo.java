@@ -39,6 +39,16 @@ public class FlightsRepo {
         setDbChanged();
     }
 
+
+    public void deleteFlight(int flightId) {
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        session.createQuery("delete from FlightEntity where id = :id").setParameter("id", flightId).executeUpdate();
+        tx.commit();
+        setDbChanged();
+    }
+
     private void setDbChanged() {
         wasDbChanged = true;
     }

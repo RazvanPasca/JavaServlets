@@ -9,8 +9,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>Flights-Page</title>
+    <title>Flights-Page-Admin</title>
     <meta charset="utf-8">
+    <script type="text/javascript" src="../../assets/js/admin.js"></script>
     <link rel="stylesheet" type="text/css" href="../../assets/css/admin.css" media="screen"/>
 </head>
 <body>
@@ -28,6 +29,11 @@
                 Departure Time: <c:out value="${flight.departureTime}"/>
                 <br>
                 Arrival Time: <c:out value="${flight.arrivalTime}"/>
+                <button id="delete"
+                        type="submit"
+                        value=<c:out value="${flight.id}"/>>
+                    Delete Flight
+                </button>
             </li>
         </c:forEach>
     </ul>
@@ -51,7 +57,7 @@
         <input type="text" class="input" name="flightNr" id="flightNr" required="required"
                placeholder="Flight Nr">
 
-        <input  id ="submit-button" type="submit" class="button" value="Add/Update flight">
+        <input id="submit-button" type="submit" class="button" value="Add/Update flight">
 
     </form>
 </div>

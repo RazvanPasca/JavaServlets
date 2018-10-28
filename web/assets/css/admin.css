@@ -3,7 +3,7 @@ body {
     background-size: 100% 100%;
 }
 
-h3{
+h3 {
     color: white;
 }
 
@@ -22,6 +22,16 @@ h3{
     font-weight: bold;
 }
 
+button {
+    margin-left: auto;
+    margin-right: 10px;
+    left: 50%;
+    position: relative;
+    top: -30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
 #form {
     position: fixed;
     top: 20px;
@@ -34,19 +44,18 @@ li {
     border: cadetblue;
     color: mediumpurple;
     list-style: none;
-    opacity: .8;
+    opacity: .9;
     width: 100%;
     margin: 5px 0px;
     border-radius: 5px;
 }
 
-ul{
+ul {
     padding-left: 0px;
 }
 
-
 form {
-    opacity: .7;
+    opacity: .9;
     background: cadetblue;
     margin: 10px 0px;
     border-radius: 5px;
