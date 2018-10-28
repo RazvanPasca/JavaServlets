@@ -23,7 +23,7 @@ public class FlightEntity {
 
     private int flightNr;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "arrival_city_id")
     public CityEntity getArrivalCity() {
         return arrivalCity;
@@ -33,7 +33,7 @@ public class FlightEntity {
         this.arrivalCity = arrivalCity;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "departure_city_id")
     public CityEntity getDepartureCity() {
         return departureCity;

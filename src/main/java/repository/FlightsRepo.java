@@ -25,5 +25,14 @@ public class FlightsRepo {
         return flightsEntities;
     }
 
+    public void saveFlight(FlightEntity flightEntity) {
+
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        session.save(flightEntity);
+        tx.commit();
+    }
+
 
 }

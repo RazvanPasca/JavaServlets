@@ -14,27 +14,46 @@
     <link rel="stylesheet" type="text/css" href="../../assets/css/admin.css" media="screen"/>
 </head>
 <body>
-ADMIN LANDING PAGE
-<a href="/logout">Logout</a>
+<a id="logout" href="/logout">Logout</a>
 <%--@elvariable id="flights" type="java.util.List"--%>
-<ul>
+<div id="form">
     <h3>Flights</h3>
-    <c:forEach var="flight" items="${flights}">
-        <li>
-            Departure City: <c:out value="${flight}"/>
-            <br>
-            Arrival City: <c:out value="${flight}"/>
-        </li>
-        <br/>
-    </c:forEach>
+    <ul>
+        <c:forEach var="flight" items="${flights}">
+            <li>
+                Departure City: <c:out value="${flight.departureCity}"/>
+                <br>
+                Arrival City: <c:out value="${flight.arrivalCity}"/>
+                <br>
+                Departure Time: <c:out value="${flight.departureTime}"/>
+                <br>
+                Arrival Time: <c:out value="${flight.arrivalTime}"/>
+            </li>
+        </c:forEach>
+    </ul>
 
-    <h3>Users</h3>
-    <c:forEach var="user" items="${users}">
-        <li>
-            User: <c:out value="${user}"/>
-        </li>
-        <br/>
-    </c:forEach>
-</ul>
+    <form id="addFlight" action="/addFlight" method="post">
+        <input type="text" class="input" name="airplane" id="airplane" required="required"
+               placeholder="Airplane Type">
+
+        <input type="text" class="input" name="departureCity" id="departureCity" required="required"
+               placeholder="Departure City">
+
+        <input type="date" class="input" name="departureTime" id="departureTime" required="required"
+               placeholder="Departure Time">
+
+        <input type="text" class="input" name="arrivalCity" id="arrivalCity" required="required"
+               placeholder="Arrival City">
+
+        <input type="date" class="input" name="arrivalTime" id="arrivalTime" required="required"
+               placeholder="Arrival Time">
+
+        <input type="text" class="input" name="flightNr" id="flightNr" required="required"
+               placeholder="Flight Nr">
+
+        <input  id ="submit-button" type="submit" class="button" value="Add/Update flight">
+
+    </form>
+</div>
 </body>
 </html>
